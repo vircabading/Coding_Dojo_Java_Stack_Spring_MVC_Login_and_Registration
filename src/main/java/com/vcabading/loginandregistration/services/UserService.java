@@ -68,4 +68,15 @@ public class UserService {
         }
     }
     
+    //	**** Retrieve User By ID ********************************
+    
+	public User retrieveUser(Long id) {
+		Optional<User> optUser = this.userRepo.findById(id);
+		if ( optUser.isPresent() ) {
+			return optUser.get();			
+		} else {
+			return null;
+		}
+	}
+    
 }

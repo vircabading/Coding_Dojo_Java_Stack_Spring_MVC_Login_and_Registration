@@ -32,7 +32,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Pattern(regexp="^[A-Za-z]*$",message = "User Name must be letters only")
+    @Pattern(regexp="^[A-Za-z]*$",message = "User Name must be letters only")		// Validate: Alphabet Only
     @NotEmpty(message="Username is required!")
     @Size(min=3, max=30, message="Username must be between 3 and 30 characters")
     private String userName;

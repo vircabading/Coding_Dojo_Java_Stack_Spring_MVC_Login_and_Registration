@@ -28,19 +28,35 @@ public class HomeController {
     @Autowired
     private UserService userServ;
     
-    //	//// GENERATE FORM /////////////////////////////////////////
+    //	//// SHOW //////////////////////////////////////////////////
    
-    //	**** Display the root with Registration and Log-in Forms
+    //	**** Display the root with Registration and Log-in Forms ***
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
+    	if (session.getAttribute("user_id") != null) {		// If user is in session
+    		return "redirect:/dashboard";					//		re-route to dashboard
+    	}
+    	
         model.addAttribute("newUser", new User());
         model.addAttribute("newLogin", new LoginUser());
         return "index.jsp";
     }
     
-    //	//// 
+    //	**** Display DASHBOARD *************************************
+    @GetMapping("/dashboard")
+    public String dashboard(Model model, HttpSession session) {
+    	if (session.isNew() || session.getAttribute("user_id") == null) {
+    		return "redirect:/";
+    	}
+    	User loggedInUser = this.userServ.retrieveUser((Long) session.getAttribute("user_id"));
+    	model.addAttribute("loggedInUser", loggedInUser);
+    	return "dashboard.jsp";
+    }
     
-    //	**** POST: Register the New User ***************************
+    //	//// CREATE ////////////////////////////////////////////////
+    
+    //	**** PUT: Register the New User ****************************
+
     @PutMapping("/")
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
             BindingResult result, Model model, HttpSession session) {
@@ -54,6 +70,7 @@ public class HomeController {
     }
     
     //	**** POST: Login the User ***********************************
+
     @PostMapping("/")
     public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {
@@ -66,4 +83,11 @@ public class HomeController {
         return "redirect:/dashboard";
     }
     
+    //	//// DELETE //////////////////////////////////////////////////
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.invalidate();					// 	Log the user out
+    	return "redirect:/";					//		then redirect to index 
+    }
 }

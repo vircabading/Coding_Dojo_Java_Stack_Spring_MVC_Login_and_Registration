@@ -30,8 +30,9 @@
 		<div class="navbar navbar-dark bg-dark box-shadow">
 			<div class="container d-flex justify-content-between">
 				<a href="/" class="navbar-brand d-flex align-items-center"> <strong
-					class="text-warning">LOGIN & REGISTRATION</strong>
-				</a> <a class="btn btn-secondary " href="/">HOME</a>
+					class="text-warning">LOGIN AND REGISTRATION</strong>
+				</a>
+				<button class="btn btn-info btn-sm round" onclick="window.location.href='/';">Index</button>
 			</div>
 		</div>
 	</header>
