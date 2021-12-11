@@ -73,16 +73,16 @@
 				<form:form class="col bg-info m-2 rounded" action="/login"
 					method="post" modelAttribute="newLogin">
 					<div class="form-group">
-						<label>Email:</label>
+						<label>Email:</label> <strong> <form:errors path="email"
+								class="text-danger alert mb-3" />
+						</strong>
 						<form:input path="email" class="form-control mb-3" />
-						<form:errors path="email"
-							class="text-danger alert alert-danger mb-3" />
 					</div>
 					<div class="form-group">
-						<label>Password:</label>
+						<label>Password:</label> <strong> <form:errors
+								path="password" class="text-danger alert mb-3" />
+						</strong>
 						<form:password path="password" class="form-control mb-3" />
-						<form:errors path="password"
-							class="text-danger alert alert-danger mb-3" />
 					</div>
 					<input type="submit" value="Login" class="btn btn-success mb-3" />
 				</form:form>
