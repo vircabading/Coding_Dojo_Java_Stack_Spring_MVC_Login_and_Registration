@@ -12,7 +12,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -41,9 +43,18 @@ public class User {
     @Email(message="Please enter a valid email!")
     private String email;
     
+    @NotNull
+	@Min(value=10, message="Age must be at least 10")
+	private int age;
+    
     @NotEmpty(message="Password is required!")
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
     private String password;
+    
+    @NotNull
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date updatedAt;
     
     @Transient
     @NotEmpty(message="Confirm Password is required!")
