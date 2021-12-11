@@ -44,41 +44,47 @@
 				<form:form class="col bg-info m-2 rounded" action="/register"
 					method="post" modelAttribute="newUser">
 					<div class="form-group">
-						<label>User Name:</label>
-						<form:input path="userName" class="form-control" />
-						<form:errors path="userName" class="text-danger" />
+						<label>User Name:</label> <strong> <form:errors
+								path="userName" class="text-danger alert mb-3" />
+						</strong>
+						<form:input path="userName" class="form-control mb-3" />
 					</div>
 					<div class="form-group">
-						<label>Email:</label>
-						<form:input path="email" class="form-control" />
-						<form:errors path="email" class="text-danger" />
+						<label>Email:</label> <strong> <form:errors path="email"
+								class="text-danger text-danger alertmb-3" />
+						</strong>
+						<form:input path="email" class="form-control mb-3" />
 					</div>
 					<div class="form-group">
-						<label>Password:</label>
-						<form:password path="password" class="form-control" />
-						<form:errors path="password" class="text-danger" />
+						<label>Password:</label> <strong> <form:errors
+								path="password" class="text-danger text-danger alertmb-3" />
+						</strong>
+						<form:password path="password" class="form-control mb-3" />
 					</div>
 					<div class="form-group">
-						<label>Confirm Password:</label>
-						<form:password path="confirm" class="form-control" />
-						<form:errors path="confirm" class="text-danger" />
+						<label>Confirm Password:</label> <strong> <form:errors
+								path="confirm" class="text-danger text-danger alert mb-3" />
+						</strong>
+						<form:password path="confirm" class="form-control mb-3" />
 					</div>
-					<input type="submit" value="Register" class="btn btn-primary" />
+					<input type="submit" value="Register" class="btn btn-primary mb-3" />
 				</form:form>
 				<!-- //// LOGIN FORM //////////////////////// -->
 				<form:form class="col bg-info m-2 rounded" action="/login"
 					method="post" modelAttribute="newLogin">
 					<div class="form-group">
 						<label>Email:</label>
-						<form:input path="email" class="form-control" />
-						<form:errors path="email" class="text-danger" />
+						<form:input path="email" class="form-control mb-3" />
+						<form:errors path="email"
+							class="text-danger alert alert-danger mb-3" />
 					</div>
 					<div class="form-group">
 						<label>Password:</label>
-						<form:password path="password" class="form-control" />
-						<form:errors path="password" class="text-danger" />
+						<form:password path="password" class="form-control mb-3" />
+						<form:errors path="password"
+							class="text-danger alert alert-danger mb-3" />
 					</div>
-					<input type="submit" value="Login" class="btn btn-success" />
+					<input type="submit" value="Login" class="btn btn-success mb-3" />
 				</form:form>
 			</div>
 		</div>
