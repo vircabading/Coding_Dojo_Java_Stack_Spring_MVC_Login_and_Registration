@@ -1,6 +1,4 @@
 package com.vcabading.loginandregistration.controllers;
-
-package com.username.cafeJava.controllers;
     
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -16,13 +14,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.vcabading.loginandregistration.models.LoginUser;
 import com.vcabading.loginandregistration.models.User;
 import com.vcabading.loginandregistration.services.UserService;
-    
+
+////////////////////////////////////////////////////////////////////
+//	HOME CONTROLLER
+////////////////////////////////////////////////////////////////////
+
 @Controller
 public class HomeController {
+	
+	//	//// FIELDS ////////////////////////////////////////////////
     
     @Autowired
     private UserService userServ;
     
+    //	//// RETRIEVE //////////////////////////////////////////////
+   
+    //	**** Display the root with Registration and Log-in Forms
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("newUser", new User());
@@ -30,6 +37,7 @@ public class HomeController {
         return "index.jsp";
     }
     
+    //	**** POST: Register the New User ***************************
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
             BindingResult result, Model model, HttpSession session) {
@@ -42,6 +50,7 @@ public class HomeController {
         return "redirect:/home";
     }
     
+    //	**** POST: Login the User ***********************************
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {
