@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.vcabading.loginandregistration.models.LoginUser;
 import com.vcabading.loginandregistration.models.User;
@@ -27,7 +28,7 @@ public class HomeController {
     @Autowired
     private UserService userServ;
     
-    //	//// RETRIEVE //////////////////////////////////////////////
+    //	//// GENERATE FORM /////////////////////////////////////////
    
     //	**** Display the root with Registration and Log-in Forms
     @GetMapping("/")
@@ -37,8 +38,10 @@ public class HomeController {
         return "index.jsp";
     }
     
+    //	//// 
+    
     //	**** POST: Register the New User ***************************
-    @PostMapping("/register")
+    @PutMapping("/")
     public String register(@Valid @ModelAttribute("newUser") User newUser, 
             BindingResult result, Model model, HttpSession session) {
         userServ.register(newUser, result);
@@ -47,11 +50,11 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", newUser.getId());
-        return "redirect:/home";
+        return "redirect:/dashboard";
     }
     
     //	**** POST: Login the User ***********************************
-    @PostMapping("/login")
+    @PostMapping("/")
     public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {
         User user = userServ.login(newLogin, result);
@@ -60,7 +63,7 @@ public class HomeController {
             return "index.jsp";
         }
         session.setAttribute("user_id", user.getId());
-        return "redirect:/home";
+        return "redirect:/dashboard";
     }
     
 }

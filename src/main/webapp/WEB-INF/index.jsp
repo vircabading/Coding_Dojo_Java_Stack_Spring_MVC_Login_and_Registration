@@ -41,8 +41,10 @@
 		<div class="container mt-4">
 			<div class="row">
 				<!-- //// REGISTRATION FORM //////////////////////// -->
-				<form:form class="col bg-info m-2 rounded" action="/register"
+				<form:form class="col bg-info m-2 p-2 round" action="/"
 					method="post" modelAttribute="newUser">
+					<input type="hidden" name="_method" value="put">	<!-- ### Converts method of form to PUT ### -->
+					<h2><strong>Register and Account:</strong></h2>
 					<div class="form-group">
 						<label>User Name:</label> <strong> <form:errors
 								path="userName" class="text-danger alert mb-3" />
@@ -67,11 +69,12 @@
 						</strong>
 						<form:password path="confirm" class="form-control mb-3" />
 					</div>
-					<input type="submit" value="Register" class="btn btn-primary mb-3" />
+					<input type="submit" value="Register" class="btn btn-primary btn-sm round mb-3" />
 				</form:form>
 				<!-- //// LOGIN FORM //////////////////////// -->
-				<form:form class="col bg-info m-2 rounded" action="/login"
+				<form:form class="col bg-info m-2 round p-2" action="/"
 					method="post" modelAttribute="newLogin">
+					<h2><strong>Log-In</strong></h2>
 					<div class="form-group">
 						<label>Email:</label> <strong> <form:errors path="email"
 								class="text-danger alert mb-3" />
@@ -84,7 +87,7 @@
 						</strong>
 						<form:password path="password" class="form-control mb-3" />
 					</div>
-					<input type="submit" value="Login" class="btn btn-success mb-3" />
+					<input type="submit" value="Login" class="btn btn-success btn-sm round mb-3" />
 				</form:form>
 			</div>
 		</div>
